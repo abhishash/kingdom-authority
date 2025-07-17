@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { ReadonlyURLSearchParams } from 'next/navigation';
-import { isArray, isObject } from './type-guards';
+import { isArray } from './type-guards';
 
 export const createUrl = (pathname: string, params: URLSearchParams | ReadonlyURLSearchParams) => {
   const paramsString = params.toString();
@@ -41,37 +41,9 @@ export const validateEnvironmentVariables = () => {
   }
 };
 
-export const getLocalStorage = (key: string | any, needParsedData = false) => {
-  if (typeof window !== 'undefined') {
-    const data = localStorage.getItem(key);
-    if (!data || typeof data === 'undefined') return null;
-    if (needParsedData) return JSON.parse(data);
-    return data;
-  }
-};
 
-/**
- * Remove data from local storage
- *
- * @param {string} storageKey - Key for the storage
- * @returns void
- */
-export const removeFromLocalStorage = (storageKey: string | any) => {
-  if (typeof window !== 'undefined') {
-    localStorage.removeItem(storageKey);
-  }
-};
 
-export const setLocalStorage = (key: string, data: any) => {
-  if (typeof window !== 'undefined') {
-    if (isArray(data) || isObject(data)) {
-      data = JSON.stringify(data);
-    }
-    if (typeof data === 'string') {
-      localStorage.setItem(key, data);
-    }
-  }
-};
+
 
 export type T = {
   error: [];

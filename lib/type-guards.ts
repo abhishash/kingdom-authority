@@ -8,7 +8,7 @@ export const isObject = (object: unknown): object is Record<string, unknown> => 
     return typeof object === 'object' && object !== null && !Array.isArray(object);
 };
 
-export const isArray = (arr: any) => {
+export const isArray = (arr: unknown) => {
     return arr && Array.isArray(arr) && arr.length > 0;
 }
 
