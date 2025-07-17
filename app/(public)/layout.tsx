@@ -1,11 +1,10 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "./swiper.css";
+import "../globals.css";
+import "../swiper.css";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Menu, X, BookOpen, Search } from "lucide-react";
+import {  BookOpen } from "lucide-react";
 import { Toaster } from "sonner";
 import QueryProvider from "@/components/QueryProvider";
 import { ThemeProvider } from "@/components/theme-providers";
@@ -91,50 +90,6 @@ export default function RootLayout({
 }
 
 
-
-function MobileNav() {
-  return (
-    <div className="md:hidden">
-      <Button variant="ghost" size="icon" className="mobile-menu-button">
-        <Menu className="h-8 w-8 size-8" />
-        <span className="sr-only">Toggle menu</span>
-      </Button>
-      <div className="mobile-menu hidden fixed inset-0 z-50 bg-background">
-        <div className="container flex h-16 items-center justify-between">
-          {/* <Link href="/" className="flex items-center gap-2">
-            <BookOpen className="h-6 w-6" />
-            <span className="font-bold text-xl">LyricsFinder</span>
-          </Link> */}
-          <Button variant="ghost" size="icon" className="mobile-menu-close">
-            <X className="h-6 w-6" />
-            <span className="sr-only">Close menu</span>
-          </Button>
-        </div>
-        <nav className="container grid gap-6 py-6">
-          {/* <Link
-            href="/"
-            className="text-lg font-medium hover:underline underline-offset-4"
-          >
-            Home
-          </Link> */}
-          {/* <Link
-            href="/lyrics"
-            className="text-lg font-medium hover:underline underline-offset-4"
-          >
-            Lyrics
-          </Link>
-          <Link
-            href="/about"
-            className="text-lg font-medium hover:underline underline-offset-4"
-          >
-            About
-          </Link> */}
-        </nav>
-      </div>
-    </div>
-  );
-}
-
 function Footer() {
   return (
     <footer className="w-full border-t py-6 md:py-0">
@@ -142,7 +97,7 @@ function Footer() {
         <div className="flex items-center gap-2">
           <BookOpen className="h-5 w-5" />
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Victory's Song. All rights reserved.
+            © {new Date().getFullYear()} Victory&apos;s Song. All rights reserved.
           </p>
         </div>
         <nav className="flex gap-4">

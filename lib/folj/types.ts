@@ -11,66 +11,6 @@ export type Edge<T> = {
   node: T;
 };
 
-export type Cart = Omit<OdooCart, "lines"> & {
-  lines: any;
-  prices: {
-    applied_taxes: {
-      name: string;
-      value: number;
-      currency: string;
-    }[];
-  };
-  discounts: [];
-  order_currency: string;
-  order_currency_id: number;
-  grand_total: {
-    currency: string;
-    value: number;
-  };
-  subtotal_excluding_tax: {
-    currency: string;
-    value: number;
-  };
-  cartItemId: number;
-  quantity: number;
-  product: {
-    name: string;
-    sku: string;
-    url_key: string;
-    in_stock: boolean;
-    short_description: string;
-    thumbnail: Image;
-    prices: {
-      price: {
-        currency: string;
-        value: number;
-      };
-      row_total: {
-        currency: string;
-        value: number;
-      };
-      row_total_including_tax: {
-        currency: string;
-        value: number;
-      };
-      total_item_discount: {
-        currency: string;
-        value: number;
-      };
-      discounts: string;
-    };
-  };
-  configurable_options: [
-    {
-      option_label: string;
-      value_label: string;
-    },
-    {
-      option_label: string;
-      value_label: string;
-    }
-  ];
-};
 
 export type CartItem = {
   cartItemId: number;
@@ -553,7 +493,6 @@ export type OdooHomepageCollection = {
 
 export type OdooCollectionsOperation = {
   category: OdooCollection[];
-  variables: { filter: {} };
 };
 
 export type OdooMenuOperation = {
@@ -615,7 +554,6 @@ export type OdooProductRecommendationsOperation = {
 export type OdooFetchVariables = {
   pageSize: number;
   currentPage: string;
-  filter?: {};
   sort?: { [key: string]: string };
   search?: string;
 };
@@ -714,7 +652,6 @@ export type ShippingAddressType = {
 export type ShippingMethodDataType = {
   variables: ShippingMethodType;
   success: boolean;
-  setShippingMethodsOnCart: {};
 };
 
 export type PaymentMethodDataType = {

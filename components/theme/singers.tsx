@@ -1,5 +1,6 @@
 "use client";
-import { Autoplay, Keyboard } from "swiper/modules"
+import Image from "next/image";
+import { Autoplay } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 const Singers = () => {
@@ -23,10 +24,10 @@ const Singers = () => {
                 >
                     {
                         Array.from({ length: 7 }).map((_, index) =>
-                            <SwiperSlide>
+                            <SwiperSlide key={index}>
                                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 relative">
                                     <a href="#">
-                                        <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+                                        <Image className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
                                     </a>
                                     <div className="p-5">
                                         <a href="#">

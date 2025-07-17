@@ -8,7 +8,6 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 
-import Image from 'next/image'
 import AppImage from '../ui/appImage'
 
 const images = [

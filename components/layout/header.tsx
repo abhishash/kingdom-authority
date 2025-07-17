@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "./nav-bar";
 import Link from "next/link";
-import { BookOpen, BookOpenText } from "lucide-react";
+import {  BookOpenText } from "lucide-react";
 import { SongSearch } from "../theme/song-search";
 import { ModeToggle } from "../ui/mode-toggle";
 import { Button } from "../ui/button";
@@ -19,7 +19,7 @@ function Header() {
             {/* <MobileNav /> */}
             <BookOpenText className="size-8 stroke-red-600" />
             <span className="font-bold text-xl font- text-red-500 md:block hidden">
-              Victorious's Song
+              Kingdom <br /> Authority
             </span>
           </Link>
         </div>

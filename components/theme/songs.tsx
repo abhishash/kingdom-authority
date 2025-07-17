@@ -1,11 +1,7 @@
 import { getSongs } from "@/lib/folj";
 import { isArray } from "@/lib/type-guards";
-import Link from "next/link";
 import { FC } from "react";
-import AppImage from "../ui/appImage";
-import { formatToMonthYear } from "@/lib/utils";
 import SongCarousel from "./song.carousel";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 const Songs: FC<{
   title: string;

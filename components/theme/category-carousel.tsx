@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Autoplay, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button } from "../ui/button";
 import AppImage from "../ui/appImage";
 
 const CategoryCarousel = ({ title }: { title: string }) => {
@@ -40,7 +38,7 @@ const CategoryCarousel = ({ title }: { title: string }) => {
           className="mySwiper my-4"
         >
           {Array.from({ length: 30 }).map((_, index) => (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <div className="flex flex-col items-center gap-2">
                   <AppImage
                     src="/images/image1.jfif"

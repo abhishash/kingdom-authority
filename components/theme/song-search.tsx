@@ -1,11 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,65 +14,17 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 
 export function SongSearch() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [open, setOpen] = React.useState(false);
-  const currentQuery = searchParams.get("q") || "";
-  const [query, setQuery] = React.useState(currentQuery);
-  const [suggestions, setSuggestions] = React.useState<string[]>([]);
-  const [loading, setLoading] = React.useState(false);
+  const [open] = React.useState(false);
 
-  const updateQueryParam = (newQuery: string) => {
-    const params = new URLSearchParams(window.location.search);
-    if (newQuery) {
-      params.set("q", newQuery);
-    } else {
-      params.delete("q");
-    }
-    router.push(`?${params.toString()}`);
-  };
+  
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    updateQueryParam(query);
-    setOpen(false);
-  };
 
-  const fetchSuggestions = React.useCallback(async (term: string) => {
-    if (!term) {
-      setSuggestions([]);
-      return;
-    }
 
-    try {
-      setLoading(true);
-      const res = await fetch(
-        `/api/songs/suggest?q=${encodeURIComponent(term)}`
-      );
-      const data = await res.json();
-      setSuggestions(data.suggestions || []);
-    } catch (error) {
-      console.error("Failed to fetch suggestions:", error);
-      setSuggestions([]);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  
 
-  React.useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      fetchSuggestions(query);
-    }, 300);
-
-    return () => clearTimeout(delayDebounce);
-  }, [query, fetchSuggestions]);
 
   return (
     <AlertDialog>

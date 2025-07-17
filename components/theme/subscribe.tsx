@@ -4,7 +4,6 @@ import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import fetchHandler from "@/utils/fetcher";
-import { Toaster } from "../ui/sonner";
 import { toast } from "sonner";
 import { Badge } from "../ui/badge";
 
@@ -17,34 +16,28 @@ const subscribe = {
 };
 
 const Subscribe = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<any>();
+  const { register, handleSubmit } = useForm();
 
-  const { data, error, isPending, mutate, mutateAsync, reset, status } =
-    useMutation({
-      mutationFn: (data: FieldValues) =>
-        fetchHandler({
-          url: "/subscribe",
-          method: "POST",
-          queryKey: "/subscribe",
-          body: data,
-        }),
-      onSuccess: (data) => {
-        const { message, success } = data;
-        if (success) {
-          toast.success(message);
-        } else {
-          toast.warning(message);
-        }
-      },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    });
+  const { mutateAsync } = useMutation({
+    mutationFn: (data: FieldValues) =>
+      fetchHandler({
+        url: "/subscribe",
+        method: "POST",
+        queryKey: "/subscribe",
+        body: data,
+      }),
+    onSuccess: (data) => {
+      const { message, success } = data;
+      if (success) {
+        toast.success(message);
+      } else {
+        toast.warning(message);
+      }
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
 
   const onSubmit = async (data: FieldValues) => {
     await mutateAsync(data);

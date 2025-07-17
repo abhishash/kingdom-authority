@@ -1,15 +1,10 @@
-// components/GaanaLoginModal.tsx
 "use client";
 
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 import { BookOpenText } from "lucide-react";
 import AppImage from "../ui/appImage";
@@ -30,7 +25,7 @@ export default function GaanaLoginModal({
             {/* <Image src="" alt="Gaana" width={100} height={40} className="mb-4" /> */}
             <div className="flex items-center gap-1">
               <BookOpenText className="size-10 stroke-red-600" />
-              <h1 className="text-lg font-bold text-red-600">Victorious's Song</h1>
+              <h1 className="text-lg font-bold text-red-600">KindDom <br /> Authority</h1>
             </div>
             <h2 className="text-2xl font-bold mb-2 text-center">
               Listen to Gaana Non-Stop

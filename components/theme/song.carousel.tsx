@@ -6,7 +6,7 @@ import { formatToMonthYear } from "@/lib/utils";
 import { FC, useState } from "react";
 import { SongTypes } from "@/lib/folj/types";
 import { Bookmark, Eye, Heart, Play } from "lucide-react";
-import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
