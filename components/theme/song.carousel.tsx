@@ -29,12 +29,12 @@ const SongCarouselSlide: FC<{
   };
   return (
     <Link
-      href={`/song/${item?.songSlug || ""}`}
+      href={`/songs/${item?.songSlug || ""}`}
       key={item._id}
-      className="flex flex-col  rounded-lg md:max-w-xl "
+      className="flex flex-col rounded-lg md:max-w-xl "
     >
       <div
-        className="relative max-h-32 md:min-h-45 min-w-20 md:min-w-45 overflow-hidden rounded-4xl"
+        className="relative max-h-28 md:min-h-45 min-w-28 md:min-w-45 overflow-hidden rounded-4xl"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

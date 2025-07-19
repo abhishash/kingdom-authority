@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "./nav-bar";
 import Link from "next/link";
-import {  BookOpenText } from "lucide-react";
+import { BookOpenText, UserIcon } from "lucide-react";
 import { SongSearch } from "../theme/song-search";
 import { ModeToggle } from "../ui/mode-toggle";
 import { Button } from "../ui/button";
@@ -56,10 +56,19 @@ function Header() {
             Image Gallery
           </Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-0.5 md:gap-4">
           <SongSearch />
           <ModeToggle />
-          <Button variant="ghost" className="cursor-pointer" onClick={() => setModalOpen(true)}>Login / Sign Up</Button>
+          <Button variant="ghost" className="block md:hidden"  onClick={() => setModalOpen(true)} >
+            <UserIcon className="size-5" />
+          </Button>
+          <Button
+            variant="ghost"
+            className="cursor-pointer md:black hidden"
+            onClick={() => setModalOpen(true)}
+          >
+            Login / Sign Up
+          </Button>
           <GaanaLoginModal open={modalOpen} onOpenChange={setModalOpen} />
         </div>
       </div>

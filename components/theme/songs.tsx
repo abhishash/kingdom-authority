@@ -31,7 +31,7 @@ const Songs: FC<{
 
   return (
     <div className="flex flex-col gap-y-10">
-      <TitleProps title={title} />
+      <TitleProps title={title} description="The Lord will not allow me stumble; over me dat and night" />
 
       {isArray(songs) ? (
         <SongCarousel

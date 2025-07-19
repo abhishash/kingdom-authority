@@ -11,7 +11,6 @@ export type Edge<T> = {
   node: T;
 };
 
-
 export type CartItem = {
   cartItemId: number;
   quantity: number;
@@ -132,22 +131,27 @@ export type Product = {
 };
 
 export type SongTypes = {
- _id: string;
-    songTitle: string;
-    songSlug: string;
-    keyCode: string;
-    songLyrics: string;
-    postBy: string;
-    viewStatus: boolean;
-    images: {
-      public_id: string;
-      url: string;
-      _id: string;
-    }[];
-    createdAt: string;
-}
+  _id: string;
+  authorName: string;
+  songTitle: string;
+  songSlug: string;
+  keyCode: string;
+  songLyrics: string;
+  postBy: string;
+  viewStatus: boolean;
+  images: {
+    public_id: string;
+    url: string;
+    _id: string;
+  }[];
+  createdAt: string;
+};
 export type SongsTypes = {
   songs?: SongTypes[];
+};
+
+export type SingleDataTypes = {
+  data?: SongTypes;
 };
 
 export type ProductOption = {

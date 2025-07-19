@@ -30,7 +30,7 @@ export function SongSearch() {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
-          variant="outline"
+          variant="ghost"
           className="cursor-pointer"
           size="icon"
           // onClick={() => setOpen((prev) => !prev)}

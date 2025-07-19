@@ -8,7 +8,7 @@ import TitleProps from "./title-props";
 const CategoryCarousel = ({ title }: { title: string }) => {
   return (
     <div className="flex flex-col gap-y-10">
-       <TitleProps title={title} />
+       <TitleProps title={title} description="The Lord will not allow me stumble; over me dat and night" />
       <div className="flex items-center flex-col w-full gap-0">
        
         <Swiper
@@ -45,7 +45,7 @@ const CategoryCarousel = ({ title }: { title: string }) => {
                     src="/images/image1.jfif"
                     alt="songs"
                     isFill
-                    className="max-w-[80px] min-w-[80px] min-h-[80px] md:min-h-[160px] md:min-w-[160px] rounded-full"
+                    className="max-w-[100px] min-w-[100px] min-h-[100px] md:min-h-[160px] md:min-w-[160px] rounded-full"
                   />
                 <h1 className="text-xs md:text-base text-center font-semibold">Amita Kamble</h1>
               </div>

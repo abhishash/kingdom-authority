@@ -18,6 +18,7 @@ import {
   PlacerOrderDataType,
   RegisterDataType,
   SongsTypes,
+  SingleDataTypes,
 } from "./types";
 import { isObject, isShopifyError } from "../type-guards";
 import { TAGS, FOLJ_ENDPOINT } from "../constants";
@@ -131,9 +132,28 @@ export async function getPage(handle: { identifier: string }): Promise<Page> {
   return res.body.cmsPage;
 }
 
+export async function getSong(songSlug: string): Promise<SingleDataTypes> {
+  let url = "songs";
+  if (songSlug) {
+    url = `${url}/${songSlug}`;
+  }
+
+  const res = await foljFetch<SingleDataTypes>({
+    query: url,
+    method: "GET",
+    cache: "force-cache",
+  });
+  if (!isObject(res?.body?.data)) {
+    return {};
+  }
+  return res?.body;
+}
+
 export async function getSongs(): Promise<SongsTypes> {
+  const url = "songs";
+
   const res = await foljFetch<SongsTypes>({
-    query: "songs",
+    query: url,
     method: "GET",
     cache: "force-cache",
   });

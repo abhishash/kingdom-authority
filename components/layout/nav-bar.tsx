@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <Drawer direction="left" defaultOpen={false}  >
       <DrawerTrigger asChild>
-        <Button variant="outline" className="cursor-pointer !p-2" itemScope={true} ><Menu  className="size-6"/></Button>
+        <Button variant="ghost" className="cursor-pointer !p-2" itemScope={true} ><Menu  className="size-6"/></Button>
       </DrawerTrigger>
       <DrawerContent className="!max-w-xs" >
         <div className="mx-auto w-full max-w-sm">
