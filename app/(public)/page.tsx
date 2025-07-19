@@ -4,10 +4,11 @@ import CategoryCarousel from "@/components/theme/category-carousel";
 import Subscribe from "@/components/theme/subscribe";
 import { Suspense } from "react";
 import SongCarouselSkeleton from "@/components/skeleton/song-carousel-skeleton";
+import Songs from "@/components/theme/songs";
 export default async function Home() {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen gap-y-18">
         {/* Main Banner */}
         <MainBanner />
         <section className="bg-zinc-200">
@@ -31,18 +32,18 @@ export default async function Home() {
         {/* <section className="container mx-auto"><Singers /></section> */}
         {/* Category Container */}
 
-        <section className="container mx-auto">
+        <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
             <CategoryCarousel title="Songs By Artist" />
           </Suspense>
         </section>
 
         {/* All songs */}
-        {/* <section className="container mx-auto px-4 md:px-0">
+        <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
             <Songs title="Songs For you" />
           </Suspense>
-        </section> */}
+        </section>
         {/* Subscribe Container */}
         <section className="container mx-auto px-4 md:px-0">
           <Subscribe />

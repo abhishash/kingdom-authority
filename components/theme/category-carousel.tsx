@@ -3,19 +3,20 @@
 import { Autoplay, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AppImage from "../ui/appImage";
+import TitleProps from "./title-props";
 
 const CategoryCarousel = ({ title }: { title: string }) => {
   return (
-    <div className="my-2 px-4">
-      <div className="flex items-center flex-col gap-0">
-        <h1 className="md:text-4xl text-2xl my-1  font-semibold">{title}</h1>
-        <h2 className="text-center text-sm font-poppins">The Lord will not allow me stumble; over me dat and night</h2>
+    <div className="flex flex-col gap-y-10">
+       <TitleProps title={title} />
+      <div className="flex items-center flex-col w-full gap-0">
+       
         <Swiper
-          slidesPerView={4}
+          slidesPerView={3}
           spaceBetween={10}
           breakpoints={{
             1280: {
-              slidesPerView: 7,
+              slidesPerView: 6,
               spaceBetween: 20,
             },
             1024: {
@@ -44,7 +45,7 @@ const CategoryCarousel = ({ title }: { title: string }) => {
                     src="/images/image1.jfif"
                     alt="songs"
                     isFill
-                    className="max-w-[80px] min-h-[80px] md:min-h-[160px] md:min-w-[160px] rounded-full"
+                    className="max-w-[80px] min-w-[80px] min-h-[80px] md:min-h-[160px] md:min-w-[160px] rounded-full"
                   />
                 <h1 className="text-xs md:text-base text-center font-semibold">Amita Kamble</h1>
               </div>

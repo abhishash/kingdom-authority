@@ -65,25 +65,39 @@ const Subscribe = () => {
             <Badge variant="secondary">Psalam 91:14</Badge>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="md:mt-6 mt-4  flex max-w-md gap-x-4"
+              className="md:mt-6 mt-4 flex-col flex w-full md:max-w-xl gap-2"
             >
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: { value: /^\S+@\S+$/, message: "Invalid email" },
-                })}
-                type="email"
-                placeholder="Enter your email"
-                autoComplete="email"
-                className="min-w-0 max-w-48 md:max-w-max flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 text-sm sm:text-base"
-              />
+              <div className="flex flex-col md:flex-row gap-2">
+                <label htmlFor="name" className="sr-only">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  {...register("name", {
+                    required: "Name is required",
+                  })}
+                  type="text"
+                  placeholder="First Name"
+                  className="min-w-0 w-full border-solid border md:max-w-max flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 text-sm sm:text-base"
+                />
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: { value: /^\S+@\S+$/, message: "Invalid email" },
+                  })}
+                  type="email"
+                  placeholder="Enter your email"
+                  autoComplete="email"
+                  className="min-w-0 w-full md:max-w-lg border-solid border flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 text-sm sm:text-base"
+                />
+              </div>
               <button
                 type="submit"
-                className="flex-none tracking-wider rounded-md cursor-pointer bg-indigo-500 px-1.5 md:px-3.5 py-0.5  md:py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="flex-none tracking-wider w-fit rounded-md cursor-pointer bg-indigo-500 px-4.5 md:px-3.5 py-2.5  md:py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Subscribe
               </button>

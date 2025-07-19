@@ -2,6 +2,7 @@ import { getSongs } from "@/lib/folj";
 import { isArray } from "@/lib/type-guards";
 import { FC } from "react";
 import SongCarousel from "./song.carousel";
+import TitleProps from "./title-props";
 
 const Songs: FC<{
   title: string;
@@ -29,20 +30,18 @@ const Songs: FC<{
   // };
 
   return (
-    <div className="">
-      <h1 className="text-center text-2xl font-bold mb-6">{title}</h1>
+    <div className="flex flex-col gap-y-10">
+      <TitleProps title={title} />
+
       {isArray(songs) ? (
-          <SongCarousel
-            songs={songs}
-            // onPlay={handlePlay}
-            // onLike={handleLike}
-            // onWishlist={handleWishlist}
-            // onView={handleView}
-          />
-       
-      ) : (
-        null
-      )}
+        <SongCarousel
+          songs={songs}
+          // onPlay={handlePlay}
+          // onLike={handleLike}
+          // onWishlist={handleWishlist}
+          // onView={handleView}
+        />
+      ) : null}
     </div>
   );
 };

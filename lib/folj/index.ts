@@ -1,6 +1,5 @@
 import {
   Collection,
-  
   Page,
   OdooCollection,
   OdooCollectionOperation,
@@ -20,8 +19,8 @@ import {
   RegisterDataType,
   SongsTypes,
 } from "./types";
-import {  isObject, isShopifyError } from "../type-guards";
-import {  TAGS,  FOLJ_ENDPOINT } from "../constants";
+import { isObject, isShopifyError } from "../type-guards";
+import { TAGS, FOLJ_ENDPOINT } from "../constants";
 
 const endpoint = `${process.env.FOLJ_SONG_DOMAIN}${FOLJ_ENDPOINT}`;
 
@@ -59,6 +58,7 @@ export async function foljFetch<T>({
         }),
       cache,
       ...(tags && { next: { tags } }),
+      ...(cache === "force-cache" && { next: { revalidate: 60 } }),
     });
 
     const body = await result.json();
@@ -88,9 +88,6 @@ export async function foljFetch<T>({
   }
 }
 
-
-
-
 const reshapeCollection = (
   collection?: OdooCollection
 ): Collection | undefined => {
@@ -103,12 +100,6 @@ const reshapeCollection = (
     path: `/search/${collection.url_key}`,
   };
 };
-
-
-
-
-
-
 
 export async function getCollection(
   handle: string
@@ -129,10 +120,6 @@ export async function getCollection(
   return reshapeCollection(res.body.category?.[0]);
 }
 
-
-
-
-
 export async function getPage(handle: { identifier: string }): Promise<Page> {
   const res = await foljFetch<OdooPageOperation>({
     query: "cms",
@@ -144,14 +131,12 @@ export async function getPage(handle: { identifier: string }): Promise<Page> {
   return res.body.cmsPage;
 }
 
-
 export async function getSongs(): Promise<SongsTypes> {
   const res = await foljFetch<SongsTypes>({
     query: "songs",
     method: "GET",
-    cache: "no-store",
+    cache: "force-cache",
   });
-
   if (!isObject(res?.body)) {
     return {
       songs: [],
@@ -159,7 +144,6 @@ export async function getSongs(): Promise<SongsTypes> {
   }
   return res?.body;
 }
-
 
 /**
  * Return Country Array
