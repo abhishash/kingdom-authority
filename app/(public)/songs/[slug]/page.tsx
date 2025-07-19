@@ -14,7 +14,7 @@ export default async function Page({
   const songInfo = await getSong(slug);
   return (
     <Suspense fallback={null}>
-      {isObject(songInfo?.data) ? <Songs song={songInfo?.data} /> : null}
+      {isObject(songInfo?.data) ?  <Songs song={songInfo?.data} /> : null}
     </Suspense>
   );
 }

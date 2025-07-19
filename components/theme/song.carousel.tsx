@@ -31,10 +31,10 @@ const SongCarouselSlide: FC<{
     <Link
       href={`/songs/${item?.songSlug || ""}`}
       key={item._id}
-      className="flex flex-col rounded-lg md:max-w-xl "
+      className="flex flex-col w-auto"
     >
       <div
-        className="relative max-h-28 md:min-h-45 min-w-28 md:min-w-45 overflow-hidden rounded-4xl"
+        className="relative max-h-28 md:min-h-45 min-w-28 md:min-w-45 overflow-hidden rounded-2xl md:rounded-4xl"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -42,10 +42,10 @@ const SongCarouselSlide: FC<{
           src={item?.images?.[0]?.url}
           alt={item?.images?.[0]?.public_id}
           isFill
-          className="md:rounded-none min-h-45 min-w-45 rounded-4xl overflow-hidden"
+          className="min-h-45 min-w-45 rounded-2xl md:rounded-4xl overflow-hidden"
         />
         <p
-          className="absolute z-10  justify-self-center rounded-lg font-semibold text-xs uppercase text-white overflow-hidden max-w-28 md:max-w-40 px-2 py-1 bg-white/[30%] bottom-9 md:bottom-13 line-clamp-2
+          className="absolute z-10 justify-self-center rounded-lg font-semibold text-xs uppercase text-white overflow-hidden max-w-24 md:max-w-40 px-2 py-1 bg-white/[30%] bottom-9 md:bottom-13 line-clamp-2
         "
         >
           {item.songTitle}
@@ -62,8 +62,10 @@ const SongCarouselSlide: FC<{
         />
         {/* Hover Buttons */}
         <div
-          className={`absolute bottom-2 h-fit w-fit left-5 md:left-10 flex items-center justify-center gap-1 transition-all duration-300 ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          className={`absolute bottom-5.5 md:bottom-2 h-fit w-fit left-4 md:left-10 flex items-center justify-center gap-1 transition-all duration-300 ${
+            isHovered
+              ? "opacity-100 translate-y-0"
+              : "opacity-100 md:opacity-0 translate-y-4"
           }`}
         >
           {/* Like Button */}
@@ -96,7 +98,7 @@ const SongCarouselSlide: FC<{
         {/* Corner Play Button (Alternative smaller version) */}
         <div
           className={`absolute top-3 right-2 transition-all duration-300 ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+            isHovered ? "opacity-100 translate-y-0" : "opacity-100 md:opacity-0 -translate-y-2"
           }`}
         >
           <button
