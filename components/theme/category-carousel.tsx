@@ -42,7 +42,7 @@ const CategoryCarousel = ({ title }: { title: string }) => {
             <SwiperSlide key={index}>
               <div className="flex flex-col items-center gap-2">
                   <AppImage
-                    src="/images/image1.jfif"
+                    src="/images/amit-kamble.PNG"
                     alt="songs"
                     isFill
                     className="max-w-[100px] min-w-[100px] min-h-[100px] md:min-h-[160px] md:min-w-[160px] rounded-full"

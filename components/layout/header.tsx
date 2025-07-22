@@ -59,12 +59,16 @@ function Header() {
         <div className="flex items-center gap-0.5 md:gap-4">
           <SongSearch />
           <ModeToggle />
-          <Button variant="ghost" className="block md:hidden"  onClick={() => setModalOpen(true)} >
+          <Button
+            variant="ghost"
+            className="block md:hidden"
+            onClick={() => setModalOpen(true)}
+          >
             <UserIcon className="size-5" />
           </Button>
           <Button
             variant="ghost"
-            className="cursor-pointer md:black hidden"
+            className="cursor-pointer md:block hidden"
             onClick={() => setModalOpen(true)}
           >
             Login / Sign Up
