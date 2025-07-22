@@ -14,9 +14,9 @@ import Subscribe from "@/components/theme/subscribe";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LyricsFinder - Find Lyrics to All Your Favorite Songs",
+  title: "Kinddom - Victory's Song",
   description:
-    "Browse our extensive collection of song lyrics from artists around the world.",
+    "I built my church on this rock and the realms of hell will not prevail against me  ",
 };
 
 // Create a client
