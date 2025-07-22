@@ -16,11 +16,12 @@ const Songs: FC<{ song: SongTypes }> = ({ song }) => {
       ) : null}
 
       {/* Add your song components here */}
-      <div className="grid grid-cols-4  px-2 my-12">
-        <div className="cols-span-4 md:col-span-1">
+      <div className="grid grid-cols-4 px-2 my-12">
+        <div className="col-span-4 md:col-span-1 my-4 md:my-4 order-2 md:order-1">
           <TitleProps title="More Explore Song" />
         </div>
-        <div className="flex col-span-4 md:col-span-3 flex-col gap-4 justify-center items-center px-4">
+        <div className="flex col-span-4 md:col-span-3 order-1 md:order-2
+         flex-col gap-4 justify-center items-center px-4">
           <h1 className="text-3xl uppercase ">{song?.songTitle}</h1>
           <p>Key Code : # {song.keyCode}</p>
           <HtmlRender htmlContent={song.songLyrics} />

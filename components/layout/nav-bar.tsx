@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Menu, Minus, Plus } from "lucide-react"
+import * as React from "react";
+import { Menu,  X } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -13,70 +13,79 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
-
+} from "@/components/ui/drawer";
+import  { MobileLogo } from "../theme/logo";
+import Link from "next/link";
 
 export default function Navbar() {
-  const [goal, setGoal] = React.useState(350)
+  const [open, setOpen] = React.useState(false);
 
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
-  }
+ 
+  const navClass =
+    "text-sm font-medium tracking-wide hover:text-red-600 hover:font-bold transition-colors text-zinc-800 duration-100";
 
   return (
-    <Drawer direction="left" defaultOpen={false}  >
+    <Drawer
+      direction="left"
+      open={open}
+      onOpenChange={setOpen}
+      defaultOpen={false}
+    >
       <DrawerTrigger asChild>
-        <Button variant="ghost" className="cursor-pointer !p-2" itemScope={true} ><Menu  className="size-6"/></Button>
+        <Button
+          variant="ghost"
+          className="cursor-pointer !p-0"
+          itemScope={true}
+        >
+          <Menu className="size-7 stroke-zinc-700" />
+        </Button>
       </DrawerTrigger>
-      <DrawerContent className="!max-w-xs" >
-        <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+      <DrawerContent className="!max-w-xs ">
+        <div className="mx-auto relative w-full h-full max-w-sm">
+          <DrawerHeader className="flex items-center border border-b border-solid justify-between flex-row">
+            <DrawerTitle>
+              <MobileLogo />
+            </DrawerTitle>
+            <DrawerDescription>
+              <Button
+                variant="ghost"
+                onClick={() => setOpen(!open)}
+                size="sm"
+                className="cursor-pointer !bg-white"
+              >
+                <X />
+              </Button>
+            </DrawerDescription>
           </DrawerHeader>
           <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              >
-                <Minus />
-                <span className="sr-only">Decrease</span>
-              </Button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
-                  Calories/day
-                </div>
-              </div>
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
-              >
-                <Plus />
-                <span className="sr-only">Increase</span>
-              </Button>
+            <div className="flex items-center  space-x-2">
+              <nav className="flex flex-col gap-4 ">
+                <Link href="/" className={navClass}>
+                  Home
+                </Link>
+                <Link href="/about" className={navClass}>
+                  About
+                </Link>
+                <Link href="/lyrics" className={navClass}>
+                  Lyrics
+                </Link>
+                <Link href="/songs" className={navClass}>
+                  Songs
+                </Link>
+                <Link href="/image-gallery" className={navClass}>
+                  Image Gallery
+                </Link>
+              </nav>
             </div>
-            <div className="mt-3 h-[120px]">
-              
-            </div>
+            <div className="mt-3 h-[120px]"></div>
           </div>
-          <DrawerFooter>
-            <Button>Submit</Button>
+          <DrawerFooter className="absolute bottom-4 w-full border border-t border-solid">
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline">Sign In</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
