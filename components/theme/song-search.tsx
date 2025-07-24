@@ -90,8 +90,8 @@ export function SongSearch() {
                   <div key={index} className="flex items-center space-x-4 my-4">
                     <Skeleton className="h-12 w-12 rounded-sm" />
                     <div className="space-y-2">
-                      <Skeleton className="h-4 w-[250px]" />
-                      <Skeleton className="h-4 w-[200px]" />
+                      <Skeleton className="h-4 w-[200px] md:w-[250px]" />
+                      <Skeleton className="h-4 w-[150px] md:w-[200px]" />
                     </div>
                   </div>
                 ))
