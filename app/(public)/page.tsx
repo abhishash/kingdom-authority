@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import SongCarouselSkeleton from "@/components/skeleton/song-carousel-skeleton";
 import Songs from "@/components/theme/songs";
 import BannerSlider from "@/components/theme/banner-slider";
+import ImageGalleryBanner from "@/components/home/image-gallery-banner";
 
 const images = [
   {
@@ -21,6 +22,37 @@ const images = [
     url: "https://swiperjs.com/demos/images/nature-4.jpg",
     _id: "4",
   },
+   {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13oxc",
+    url: "https://swiperjs.com/demos/images/nature-2.jpg",
+    _id: "2",
+  },
+  {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13osss",
+    url: "https://swiperjs.com/demos/images/nature-3.jpg",
+    _id: "3",
+  },
+  {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13oxcdhjshdj",
+    url: "https://swiperjs.com/demos/images/nature-4.jpg",
+    _id: "4",
+  },
+   {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13oxcdhjshdj",
+    url: "/images/amit-kamble.PNG",
+    _id: "4",
+  },
+   {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13oxc",
+    url: "https://swiperjs.com/demos/images/nature-2.jpg",
+    _id: "2",
+  },
+  {
+    public_id: "Ecommerce/ehphjfsrpbpoiol13osss",
+    url: "https://swiperjs.com/demos/images/nature-3.jpg",
+    _id: "3",
+  },
+ 
 ];
 export default async function Home() {
   return (
@@ -61,6 +93,12 @@ export default async function Home() {
         <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
             <Songs title="Songs For you" />
+          </Suspense>
+        </section>
+        {/* Image gallery Banner */}
+        <section className="container mx-auto px-4 md:px-0">
+          <Suspense fallback={<SongCarouselSkeleton />}>
+            <ImageGalleryBanner images={images} />
           </Suspense>
         </section>
       </div>
