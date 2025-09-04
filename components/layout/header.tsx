@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "./nav-bar";
 import Link from "next/link";
-import {  UserIcon } from "lucide-react";
+import { UserIcon } from "lucide-react";
 import { SongSearch } from "../theme/song-search";
 import { ModeToggle } from "../ui/mode-toggle";
 import { Button } from "../ui/button";
@@ -11,7 +11,8 @@ import LoginModal from "../theme/login-modal";
 
 function Header() {
   const [modalOpen, setModalOpen] = useState(false);
-  const navClass = "text-sm font-medium tracking-wide hover:text-red-600 hover:font-bold transition-colors text-zinc-800 duration-100";
+  const navClass =
+    "text-sm font-medium tracking-wide dark:text-white dark:hover:text-red-500 hover:text-red-600 hover:font-bold transition-colors text-zinc-800 duration-100";
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="px-4 md:px-16 flex h-16 items-center justify-between">
@@ -20,34 +21,20 @@ function Header() {
           <Logo />
         </div>
         <nav className="hidden md:flex gap-6 ">
-          <Link
-            href="/"
-            className={navClass}
-          >
-            Home
+          <Link href="/">
+            {" "}
+            <span className={navClass}>Home</span>
           </Link>
-          <Link
-            href="/about"
-            className={navClass}
-          >
+          <Link href="/about" className={navClass}>
             About
           </Link>
-          <Link
-            href="/lyrics"
-            className={navClass}
-          >
+          <Link href="/lyrics" className={navClass}>
             Lyrics
           </Link>
-          <Link
-            href="/songs"
-            className={navClass}
-          >
+          <Link href="/songs" className={navClass}>
             Songs
           </Link>
-          <Link
-            href="/image-gallery"
-            className={navClass}
-          >
+          <Link href="/gallery" className={navClass}>
             Image Gallery
           </Link>
         </nav>

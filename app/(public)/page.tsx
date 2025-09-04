@@ -22,7 +22,7 @@ const images = [
     url: "https://swiperjs.com/demos/images/nature-4.jpg",
     _id: "4",
   },
-   {
+  {
     public_id: "Ecommerce/ehphjfsrpbpoiol13oxc",
     url: "https://swiperjs.com/demos/images/nature-2.jpg",
     _id: "2",
@@ -37,22 +37,23 @@ const images = [
     url: "https://swiperjs.com/demos/images/nature-4.jpg",
     _id: "4",
   },
-   {
+  {
     public_id: "Ecommerce/ehphjfsrpbpoiol13oxcdhjshdj",
     url: "/images/amit-kamble.PNG",
     _id: "4",
   },
-   {
+  {
     public_id: "Ecommerce/ehphjfsrpbpoiol13oxc",
     url: "https://swiperjs.com/demos/images/nature-2.jpg",
     _id: "2",
   },
-  {
+  
+];
+const imageGellery = [{
     public_id: "Ecommerce/ehphjfsrpbpoiol13osss",
     url: "https://swiperjs.com/demos/images/nature-3.jpg",
     _id: "3",
   },
- 
 ];
 export default async function Home() {
   return (
@@ -98,7 +99,7 @@ export default async function Home() {
         {/* Image gallery Banner */}
         <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
-            <ImageGalleryBanner images={images} />
+            <ImageGalleryBanner images={images} title="Image Gallery" />
           </Suspense>
         </section>
       </div>

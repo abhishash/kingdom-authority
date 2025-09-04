@@ -45,7 +45,7 @@ const Subscribe = () => {
 
   return (
     <div className="my-12">
-      <div className="relative flex flex-col md:flex-row isolate bg-red-500 rounded-lg overflow-hidden py-0">
+      <div className="relative flex flex-col md:flex-row isolate bg-gray-100/60 dark:bg-neutral-900 rounded-lg overflow-hidden py-0">
         <div className="relative min-w-[30rem] md:block hidden">
           <Image
             className="object-center"
@@ -56,13 +56,13 @@ const Subscribe = () => {
         </div>
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <div className="">
-            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-red-500">
               {subscribe?.name}{" "}
             </h2>
-            <p className="md:mt-4 mt-2 text-sm md:text-lg text-white">
+            <p className="md:mt-4 mt-2 text-sm md:text-lg text-black dark:text-white">
               {subscribe?.description}
             </p>
-            <Badge variant="secondary">Psalam 91:14</Badge>
+            <Badge variant="default">Psalam 91:14</Badge>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="md:mt-6 mt-4 flex-col flex w-full md:max-w-xl gap-2"
@@ -78,7 +78,7 @@ const Subscribe = () => {
                   })}
                   type="text"
                   placeholder="First Name"
-                  className="min-w-0 w-full border-solid border md:max-w-max flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 text-sm sm:text-base"
+                  className="w-full border md:max-w-max flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-gray-600 font-medium outline-1 text-sm -outline-offset-1 outline-gray-900 placeholder:text-gray-600 focus:outline-2 focus:-outline-offset-2 focus:outline-red-500  md:min-w-xs"
                 />
                 <label htmlFor="email-address" className="sr-only">
                   Email address
@@ -92,12 +92,13 @@ const Subscribe = () => {
                   type="email"
                   placeholder="Enter your email"
                   autoComplete="email"
-                  className="min-w-0 w-full md:max-w-lg border-solid border flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 text-sm sm:text-base"
+                  className="w-full border md:max-w-max flex-auto rounded-md bg-white/5 px-2  md:px-3.5 md:py-2 py-1.5  text-gray-600 font-medium outline-1 text-sm -outline-offset-1 outline-gray-900 placeholder:text-gray-600 focus:outline-2 focus:-outline-offset-2 focus:outline-red-500 md:min-w-xs"
                 />
               </div>
+             
               <button
                 type="submit"
-                className="flex-none tracking-wider w-fit rounded-md cursor-pointer bg-indigo-500 px-4.5 md:px-3.5 py-2.5  md:py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="text-white font-bold bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 tracking-wide rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-fit cursor-pointer"
               >
                 Subscribe
               </button>

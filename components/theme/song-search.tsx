@@ -60,8 +60,8 @@ export function SongSearch() {
           <span className="sr-only">Search songs</span>
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="max-w-[92%] md:max-w-[40%] p-1 rounded-xl bg-gray-300/80">
-        <AlertDialogHeader className="bg-white rounded-xl ">
+      <AlertDialogContent className="max-w-[92%] md:max-w-[40%] p-1 rounded-xl bg-gray-300/80 dark:bg-black">
+        <AlertDialogHeader className="bg-white dark:bg-neutral-950 rounded-xl ">
           <AlertDialogTitle>
             <div className="flex items-center max-w-full mx-auto p-3">
               <label htmlFor="simple-search" className="sr-only">
@@ -148,10 +148,10 @@ export function SongSearch() {
 
               <Badge variant="secondary">Metthew 11:28</Badge>
             </div>
-            <div className="bg-gray-200 flex items-center py-1.5 px-4">
+            <div className="bg-gray-200 dark:bg-black flex items-center py-1.5 px-4">
               <button
                 onClick={() => setOpen(!open)}
-                className="flex items-center rounded-sm py-1.5 text-sm px-2 mr-2 bg-white cursor-pointer border border-solid"
+                className="flex items-center rounded-sm py-1.5 text-sm px-2 mr-2 bg-white dark:bg-neutral-900 cursor-pointer border border-solid"
               >
                 <CornerDownLeft className="size-4 stroke-gray-500 stroke-2 group-hover:stroke-red-800" />{" "}
               </button>
