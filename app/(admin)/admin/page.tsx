@@ -1,5 +1,6 @@
-const Page = async () =>{
-    return <h1>Home Page</h1>
-}
+import { redirect } from "next/navigation";
 
-export default Page
+export default function Home() {
+  redirect("/admin/dashboard");
+  return <>Coming Soon</>;
+}

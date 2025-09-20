@@ -32,3 +32,4 @@ export const FOLJ_ENDPOINT = `/api/${process.env.FOLJ_API_VERSION}`;
 export const LIMIT = 12;
 export const TOKEN = 'token';
 export const SAVED_LOCAL_STORAGE = 'shipping_address';
+export const PLACEHOLDER_IMG='/placeholder.jpg';
