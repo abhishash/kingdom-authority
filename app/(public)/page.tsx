@@ -47,9 +47,9 @@ const images = [
     url: "https://swiperjs.com/demos/images/nature-2.jpg",
     _id: "2",
   },
-  
 ];
-const imageGellery = [{
+const imageGellery = [
+  {
     public_id: "Ecommerce/ehphjfsrpbpoiol13osss",
     url: "https://swiperjs.com/demos/images/nature-3.jpg",
     _id: "3",
@@ -61,7 +61,13 @@ export default async function Home() {
       <div className="flex flex-col min-h-screen gap-y-10 md:gap-y-18">
         {/* Main Banner */}
         <div>
-          <BannerSlider images={images} />
+          <BannerSlider
+            images={images}
+            delay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+          />
           <section className="bg-zinc-200">
             <h1 className="text-2xl md:text-4xl py-2 md:py-4 text-center font-bold">
               Jesus Calls you
@@ -86,16 +92,21 @@ export default async function Home() {
 
         <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
-            <CategoryCarousel title="Songs By Artist" />
+            <CategoryCarousel
+              title="Songs By Artist"
+            />
           </Suspense>
         </section>
 
         {/* All songs */}
         <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>
-            <Songs title="Songs For you" />
+            <Songs
+              title="Songs For you"
+            />
           </Suspense>
         </section>
+        
         {/* Image gallery Banner */}
         <section className="container mx-auto px-4 md:px-0">
           <Suspense fallback={<SongCarouselSkeleton />}>

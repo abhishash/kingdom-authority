@@ -13,10 +13,12 @@ import clsx from "clsx";
 
 export default function BannerSlider({
   images,
-  className
+  className,
+  delay,
 }: {
   images: { url: string; public_id: string; _id: string }[];
   className?: string;
+  delay?: { delay: number; disableOnInteraction: boolean };
 }) {
   return (
     <section className="w-full">
@@ -25,10 +27,7 @@ export default function BannerSlider({
         effect={"fade"}
         navigation={false}
         loop={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
+        autoplay={{...delay}}
         pagination={{
           clickable: true,
         }}

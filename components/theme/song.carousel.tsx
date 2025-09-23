@@ -2,17 +2,28 @@
 
 import AppImage from "../ui/appImage";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { SongTypes } from "@/lib/folj/types";
-import { Bookmark, Eye, Heart, Play } from "lucide-react";
+import {
+  Bookmark,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  Heart,
+  Play,
+} from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import clsx from "clsx";
+import TitleProps from "./title-props";
+import { isArray } from "@/lib/type-guards";
+import { fadeInUp } from "@/lib/constants";
 const SongCarouselSlide: FC<{
   item: SongTypes;
   onPlay?: (item: SongTypes) => void;
@@ -98,7 +109,9 @@ const SongCarouselSlide: FC<{
         {/* Corner Play Button (Alternative smaller version) */}
         <div
           className={`absolute top-3 right-2 transition-all duration-300 ${
-            isHovered ? "opacity-100 translate-y-0" : "opacity-100 md:opacity-0 -translate-y-2"
+            isHovered
+              ? "opacity-100 translate-y-0"
+              : "opacity-100 md:opacity-0 -translate-y-2"
           }`}
         >
           <button
@@ -116,50 +129,105 @@ const SongCarouselSlide: FC<{
 
 const SongCarousel: FC<{
   songs: SongTypes[];
-  // onPlay?: (item: SongTypes) => void;
-  // onLike?: (item: SongTypes) => void;
-  // onWishlist?: (item: SongTypes) => void;
-  // onView?: (item: SongTypes) => void;
-}> = ({ songs }) => {
+  title: string;
+}> = ({ songs, title }) => {
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
   return (
-    <Swiper
-      spaceBetween={10}
-      slidesPerView={3}
-      breakpoints={{
-        1280: {
-          slidesPerView: 6,
-          spaceBetween: 40,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-      }}
-      scrollbar={{ draggable: true }}
-      modules={[Pagination]}
-      className="mySwiper"
-    >
-      {songs.map((song) => (
-        <SwiperSlide key={song._id} className="min-h-full">
-          <SongCarouselSlide
-            item={song}
-            // onPlay={handlePlay}
-            // onLike={handleLike}
-            // onWishlist={handleWishlist}
-            // onView={handleView}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="flex flex-col gap-y-10">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={fadeInUp}
+        viewport={{ once: true }}
+      >
+        <TitleProps
+          title={title}
+          description="The Lord will not allow me stumble; over me dat and night"
+        />
+      </motion.div>
+
+      {isArray(songs) ? (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          {/* Custom navigation buttons */}
+          <div className="absolute bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <button
+              ref={prevRef}
+              disabled={isBeginning}
+              className={`p-2 rounded-full  border shadow-2xl transition 
+                ${
+                  isBeginning
+                    ? "bg-gray-300 dark:bg-gray-600/40 cursor-not-allowed opacity-50"
+                    : "bg-gray-200/60 dark:bg-gray-700 cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600"
+                }`}
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-200" />
+            </button>
+
+            <button
+              ref={nextRef}
+              disabled={isEnd}
+              className={`p-2 rounded-full  border shadow-2xl transition 
+                ${
+                  isEnd
+                    ? "bg-gray-300 dark:bg-gray-600/40 cursor-not-allowed opacity-50"
+                    : "bg-gray-200/60 cursor-pointer dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+                }`}
+            >
+              <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-200" />
+            </button>
+          </div>
+
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={3}
+            breakpoints={{
+              1280: { slidesPerView: 6, spaceBetween: 40 },
+              1024: { slidesPerView: 5, spaceBetween: 20 },
+              768: { slidesPerView: 3, spaceBetween: 20 },
+              640: { slidesPerView: 2, spaceBetween: 20 },
+            }}
+            scrollbar={{ draggable: true }}
+            modules={[Pagination, Keyboard, Navigation]}
+            className="mySwiper"
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onBeforeInit={(swiper) => {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = prevRef.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            onSlideChange={(swiper) => {
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+            }}
+            onReachBeginning={() => setIsBeginning(true)}
+            onReachEnd={() => setIsEnd(true)}
+          >
+            {songs.map((song) => (
+              <SwiperSlide key={song._id} className="min-h-full">
+                <SongCarouselSlide item={song} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
+      ) : null}
+    </div>
   );
 };
+
 
 export default SongCarousel;

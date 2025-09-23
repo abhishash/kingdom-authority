@@ -33,3 +33,8 @@ export const LIMIT = 12;
 export const TOKEN = 'token';
 export const SAVED_LOCAL_STORAGE = 'shipping_address';
 export const PLACEHOLDER_IMG='/placeholder.jpg';
+
+export const fadeInUp = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};

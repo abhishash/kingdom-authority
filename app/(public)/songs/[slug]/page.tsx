@@ -11,10 +11,11 @@ export default async function Page({
   }>;
 }) {
   const { slug } = await params;
-  const songInfo = await getSong(slug);
+  const songInfo = await getSong(decodeURIComponent(slug));
+
   return (
     <Suspense fallback={null}>
-      {isObject(songInfo?.data) ?  <Songs song={songInfo?.data} /> : null}
+      {isObject(songInfo?.data) ? <Songs song={songInfo?.data} /> : null}
     </Suspense>
   );
 }
