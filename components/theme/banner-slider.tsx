@@ -43,7 +43,7 @@ export default function BannerSlider({
               src={img.url}
               alt={img.public_id}
               isFill
-              className={clsx("w-full h-[60vh] md:h-[80vh]  overflow-hidden", className)}
+              className={clsx("w-full h-[60vh] md:h-[80vh] overflow-hidden", className)}
               priority={index === 0} // preload the first image
             />
           </SwiperSlide>

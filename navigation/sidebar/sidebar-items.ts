@@ -14,6 +14,7 @@ import {
   ChartBar,
   Banknote,
   Gauge,
+  Music,
   GraduationCap,
   type LucideIcon,
 } from "lucide-react";
@@ -67,7 +68,11 @@ export const sidebarItems: NavGroup[] = [
         title: "Analytics",
         url: "/dashboard/coming-soon",
         icon: Gauge,
-        comingSoon: true,
+      },
+      {
+        title: "Songs",
+        url: "/admin/songs",
+        icon: Music,
       },
       {
         title: "E-commerce",

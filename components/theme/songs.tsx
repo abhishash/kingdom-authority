@@ -7,14 +7,11 @@ const Songs: FC<{
 }> = async ({ title }) => {
   const songsList = await getSongs();
   const songs = songsList?.songs || [];
-  
-  return (
-    <SongCarousel
-      songs={songs}
-      title={title}
 
-    
-    />
+  return (
+    <>
+      <SongCarousel songs={songs} title={title} />
+    </>
   );
 };
 

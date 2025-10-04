@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-providers";
 import "./globals.css";
 import "./fonts.css";
 import "./swiper.css";
+
 import { Toaster } from "@/components/ui/sonner";
 
 // ✅ Configure Poppins (choose the weights you need)

@@ -9,6 +9,18 @@ const nextConfig: NextConfig = {
         hostname: "swiperjs.com",
       },
       {
+        protocol: "https",
+        hostname: "i.pinimg.com",
+      },
+       {
+        protocol: "https",
+        hostname: "i.gifer.com",
+      },
+      {
+        protocol: "https",
+        hostname: "68.media.tumblr.com"
+      },
+      {
         protocol: "http",
         hostname: "res.cloudinary.com",
       },
@@ -19,6 +31,9 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "assets.codepen.io"
+      },{
+        protocol: "https",
+        hostname: "res.cloudinary.com"
       }
     ],
   },

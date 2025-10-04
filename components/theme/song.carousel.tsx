@@ -19,11 +19,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Keyboard, Navigation, Pagination } from "swiper/modules";
 import clsx from "clsx";
 import TitleProps from "./title-props";
-import { isArray } from "@/lib/type-guards";
+import { isArray, isObject } from "@/lib/type-guards";
 import { fadeInUp } from "@/lib/constants";
+import QuickView from "./quick-view";
 const SongCarouselSlide: FC<{
   item: SongTypes;
   onPlay?: (item: SongTypes) => void;
@@ -45,7 +46,7 @@ const SongCarouselSlide: FC<{
       className="flex flex-col w-auto"
     >
       <div
-        className="relative max-h-28 md:min-h-45 min-w-28 md:min-w-45 overflow-hidden rounded-2xl md:rounded-4xl"
+        className="relative max-h-28 md:min-h-45 min-w-28 md:min-w-45 overflow-hidden rounded-sm md:rounded-3xl"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -53,7 +54,7 @@ const SongCarouselSlide: FC<{
           src={item?.images?.[0]?.url}
           alt={item?.images?.[0]?.public_id}
           isFill
-          className="min-h-45 min-w-45 rounded-2xl md:rounded-4xl overflow-hidden"
+          className="min-h-45 min-w-45 rounded-sm md:rounded-3xl overflow-hidden"
         />
         <p
           className="absolute z-10 justify-self-center rounded-lg font-semibold text-xs uppercase text-white overflow-hidden max-w-24 md:max-w-40 px-2 py-1 bg-white/[30%] bottom-9 md:bottom-13 line-clamp-2
@@ -136,20 +137,22 @@ const SongCarousel: FC<{
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const [item, setItem] = useState<SongTypes>();
+  const [open, setOpen] = useState(false);
+  const onView = (song: SongTypes) => {
+    setItem(song);
+    setOpen(!open);
+  };
 
   return (
     <div className="flex flex-col gap-y-10">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={fadeInUp}
-        viewport={{ once: true }}
-      >
-        <TitleProps
-          title={title}
-          description="The Lord will not allow me stumble; over me dat and night"
-        />
-      </motion.div>
+      {isObject(item) && (
+        <QuickView data={item} open={open} setOpen={setOpen} />
+      )}
+      <TitleProps
+        title={title}
+        description="The Lord will not allow me stumble; over me dat and night"
+      />
 
       {isArray(songs) ? (
         <motion.div
@@ -205,9 +208,10 @@ const SongCarousel: FC<{
               nextEl: nextRef.current,
             }}
             onBeforeInit={(swiper) => {
-              // @ts-ignore
+              // @ts-expect-error: Swiper's type definitions don't include dynamic navigation refs
               swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
+
+              // @ts-expect-error: Assigning custom navigation elements dynamically
               swiper.params.navigation.nextEl = nextRef.current;
             }}
             onSlideChange={(swiper) => {
@@ -219,7 +223,7 @@ const SongCarousel: FC<{
           >
             {songs.map((song) => (
               <SwiperSlide key={song._id} className="min-h-full">
-                <SongCarouselSlide item={song} />
+                <SongCarouselSlide item={song} onView={onView} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -228,6 +232,5 @@ const SongCarousel: FC<{
     </div>
   );
 };
-
 
 export default SongCarousel;

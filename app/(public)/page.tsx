@@ -48,13 +48,6 @@ const images = [
     _id: "2",
   },
 ];
-const imageGellery = [
-  {
-    public_id: "Ecommerce/ehphjfsrpbpoiol13osss",
-    url: "https://swiperjs.com/demos/images/nature-3.jpg",
-    _id: "3",
-  },
-];
 export default async function Home() {
   return (
     <>
