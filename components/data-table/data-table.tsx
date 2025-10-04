@@ -17,7 +17,6 @@ import { ColumnDef, flexRender, type Table as TanStackTable } from "@tanstack/re
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-import { DraggableRow } from "./draggable-row";
 
 interface DataTableProps<TData, TValue> {
   table: TanStackTable<TData>;
@@ -46,15 +45,7 @@ function renderTableBody<TData, TValue>({
       </TableRow>
     );
   }
-  if (dndEnabled) {
-    return (
-      <SortableContext items={dataIds} strategy={verticalListSortingStrategy}>
-        {table.getRowModel().rows.map((row) => (
-          <DraggableRow key={row.id} row={row} />
-        ))}
-      </SortableContext>
-    );
-  }
+  
   return table.getRowModel().rows.map((row) => (
     <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
       {row.getVisibleCells().map((cell) => (
